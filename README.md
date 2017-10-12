@@ -1,2 +1,3 @@
-# vut-ial-project1
-Algoritmy - 1. projekt
+# Algoritmy - 1. projekt
+
+#### Autor: Dominik Harmim <xharmi00@stud.fit.vutbr.cz>
