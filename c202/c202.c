@@ -1,10 +1,10 @@
-
 /* ******************************* c202.c *********************************** */
 /*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
 /*  Úkol: c202 - Zásobník znaků v poli                                        */
 /*  Referenční implementace: Petr Přikryl, 1994                               */
 /*  Vytvořil: Václav Topinka, září 2005                                       */
 /*  Úpravy: Kamil Jeřábek, říjen 2017                                         */
+/*  Implementace: Dominik Harmim <xharmi00@stud.fit.vutbr.cz>, říjen 2017     */
 /* ************************************************************************** */
 /*
 ** Implementujte datový typ zásobník znaků ve statickém poli. ADT zásobník je
@@ -29,28 +29,40 @@
 ** Proto zde používáme pojem funkce i pro operace, které by byly
 ** v algoritmickém jazyce Pascalovského typu implemenovány jako
 ** procedury (v jazyce C procedurám odpovídají funkce vracející typ void).
-**
 **/
 
 #include "c202.h"
 
+
 int STACK_SIZE = MAX_STACK;
 int solved;
+int err_flag;
 
-void stackError ( int error_code ){
+
+void stackError(int error_code)
+{
 /*   ----------
 ** Vytiskne upozornění, že došlo k chybě při práci se zásobníkem.
-**
-** TUTO FUNKCI, PROSÍME, NEUPRAVUJTE!
 */
-	static const char* SERR_STRINGS[MAX_SERR+1] = {"Unknown error","Stack error: INIT","Stack error: PUSH","Stack error: TOP"};
-	if ( error_code <= 0 || error_code > MAX_SERR )
+	static const char *SERR_STRINGS[MAX_SERR + 1] = {
+		"Unknown error",
+		"Stack error: INIT",
+		"Stack error: PUSH",
+		"Stack error: TOP",
+	};
+
+	if (error_code <= 0 || error_code > MAX_SERR)
+	{
 		error_code = 0;
-	printf ( "%s\n", SERR_STRINGS[error_code] );
+	}
+
+	printf("%s\n", SERR_STRINGS[error_code]);
 	err_flag = 1;
 }
 
-void stackInit ( tStack* s ) {
+
+void stackInit(tStack *s)
+{
 /*   ---------
 ** Provede inicializaci zásobníku - nastaví vrchol zásobníku.
 ** Hodnoty ve statickém poli neupravujte - po inicializaci zásobníku
@@ -60,21 +72,29 @@ void stackInit ( tStack* s ) {
 ** volejte funkci stackError(SERR_INIT). U ostatních funkcí pro zjednodušení
 ** předpokládejte, že tato situace nenastane. 
 */
+	if (!s)
+	{
+		stackError(SERR_INIT);
+		return;
+	}
 
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	s->top = -1;
 }
 
-int stackEmpty ( const tStack* s ) {
+
+int stackEmpty(const tStack *s)
+{
 /*  ----------
 ** Vrací nenulovou hodnotu, pokud je zásobník prázdný, jinak vrací hodnotu 0.
 ** Funkci implementujte jako jediný příkaz. Vyvarujte se zejména konstrukce
 ** typu "if ( true ) b=true else b=false".
 */
-
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	return s->top == -1 ? 1 : 0;
 }
 
-int stackFull ( const tStack* s ) {
+
+int stackFull(const tStack *s)
+{
 /*  ---------
 ** Vrací nenulovou hodnotu, je-li zásobník plný, jinak vrací hodnotu 0.
 ** Dejte si zde pozor na častou programátorskou chybu "o jedničku"
@@ -83,11 +103,12 @@ int stackFull ( const tStack* s ) {
 **
 ** Funkci implementujte jako jediný příkaz.
 */
-
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	return s->top + 1 == STACK_SIZE ? 1 : 0;
 }
 
-void stackTop ( const tStack* s, char* c ) {
+
+void stackTop(const tStack *s, char *c)
+{
 /*   --------
 ** Vrací znak z vrcholu zásobníku prostřednictvím parametru c.
 ** Tato operace ale prvek z vrcholu zásobníku neodstraňuje.
@@ -97,12 +118,18 @@ void stackTop ( const tStack* s, char* c ) {
 ** Pro ověření, zda je zásobník prázdný, použijte dříve definovanou
 ** funkci stackEmpty.
 */
+	if (stackEmpty(s))
+	{
+		stackError(SERR_TOP);
+		return;
+	}
 
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	*c = s->arr[s->top];
 }
 
 
-void stackPop ( tStack* s ) {
+void stackPop(tStack *s)
+{
 /*   --------
 ** Odstraní prvek z vrcholu zásobníku. Pro ověření, zda je zásobník prázdný,
 ** použijte dříve definovanou funkci stackEmpty.
@@ -112,14 +139,16 @@ void stackPop ( tStack* s ) {
 ** pro ošetření chyby zde nevolejte (můžeme zásobník ponechat prázdný).
 ** Spíše než volání chyby by se zde hodilo vypsat varování, což však pro
 ** jednoduchost neděláme.
-** 
 */
-
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	if (!stackEmpty(s))
+	{
+		s->top--;
+	}
 }
 
 
-void stackPush ( tStack* s, char c ) {
+void stackPush(tStack *s, char c)
+{
 /*   ---------
 ** Vloží znak na vrchol zásobníku. Pokus o vložení prvku do plného zásobníku
 ** je nekorektní a ošetřete ho voláním procedury stackError(SERR_PUSH).
@@ -127,8 +156,12 @@ void stackPush ( tStack* s, char c ) {
 ** Pro ověření, zda je zásobník plný, použijte dříve definovanou
 ** funkci stackFull.
 */
+	if (stackFull(s))
+	{
+		stackError(SERR_PUSH);
+		return;
+	}
 
-	  solved = 0;                      /* V případě řešení, smažte tento řádek! */
+	s->top++;
+	s->arr[s->top] = c;
 }
-
-/* Konec c202.c */
