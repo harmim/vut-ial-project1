@@ -58,9 +58,7 @@ dkms.conf
 /cmake-*/
 
 # Project executable
-/c202/c202-test
-/c204/c204-test
-/c206/c206-test
+/c???-test
 
 # Tests
-test.output
+/test.output
