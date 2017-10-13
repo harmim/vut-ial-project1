@@ -2,7 +2,7 @@
 /*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
 /*  Úkol: c202 - Zásobník znaků v poli                                        */
 /*  Vytvořil: Václav Topinka, září 2005                                       */
-/*  Úpravy: Kamil Jeřábek, Dominik Harmim říjen 2017                          */
+/*  Úpravy: Kamil Jeřábek, Dominik Harmim, říjen 2017                          */
 /* ************************************************************************** */
 
 /* Základní testy pro c202.c */

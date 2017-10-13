@@ -72,12 +72,14 @@ void stackInit(tStack *s)
 ** volejte funkci stackError(SERR_INIT). U ostatních funkcí pro zjednodušení
 ** předpokládejte, že tato situace nenastane. 
 */
+	// Pokud s == NULL, nastane SERR_INIT.
 	if (!s)
 	{
 		stackError(SERR_INIT);
 		return;
 	}
 
+	// Prázdnému zásobníku odpovídá hodnota top == -1.
 	s->top = -1;
 }
 
@@ -89,6 +91,7 @@ int stackEmpty(const tStack *s)
 ** Funkci implementujte jako jediný příkaz. Vyvarujte se zejména konstrukce
 ** typu "if ( true ) b=true else b=false".
 */
+	// Prázdnému zásobníku odpovídá hodnota top == -1.
 	return s->top == -1;
 }
 
@@ -103,7 +106,8 @@ int stackFull(const tStack *s)
 **
 ** Funkci implementujte jako jediný příkaz.
 */
-	return s->top + 1 == STACK_SIZE;
+	// Maximální možný index zásobníku je STACK_SIZE - 1.
+	return s->top == STACK_SIZE - 1;
 }
 
 
@@ -118,12 +122,14 @@ void stackTop(const tStack *s, char *c)
 ** Pro ověření, zda je zásobník prázdný, použijte dříve definovanou
 ** funkci stackEmpty.
 */
+	// Pokud je zásobník prázdný, nastane SERR_TOP.
 	if (stackEmpty(s))
 	{
 		stackError(SERR_TOP);
 		return;
 	}
 
+	// Přiřazení hodnoty na vrcholu zásobníku do ukazatele c.
 	*c = s->arr[s->top];
 }
 
@@ -140,8 +146,10 @@ void stackPop(tStack *s)
 ** Spíše než volání chyby by se zde hodilo vypsat varování, což však pro
 ** jednoduchost neděláme.
 */
+	// Pokud je zásobník prázdný, pak nedává smysl odstranění prvku z vrcholu zásobníku.
 	if (!stackEmpty(s))
 	{
+		// Odstranění prvku z vrcholu zásobníku odpovídá snížení indexu vrcholu zásobníku.
 		s->top--;
 	}
 }
@@ -156,12 +164,14 @@ void stackPush(tStack *s, char c)
 ** Pro ověření, zda je zásobník plný, použijte dříve definovanou
 ** funkci stackFull.
 */
+	// Pokud je zásobník plný, nastane SERR_PUSH.
 	if (stackFull(s))
 	{
 		stackError(SERR_PUSH);
 		return;
 	}
 
+	// Zvýšení indexu vrcholu zásobníku a uložení hodnoty c na zvýšený index.
 	s->top++;
 	s->arr[s->top] = c;
 }
