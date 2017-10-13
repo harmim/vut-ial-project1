@@ -34,6 +34,7 @@ void stackPrint(tStack *ptrstack)
 			printf("Warning: ptrstack->top (value: %i) is out of range STACK_SIZE (%i).\n", ptrstack->top, STACK_SIZE);
 			maxi = STACK_SIZE - 1;
 		}
+
 		printf("--- BOTTOM [ ");
 		for (int i = 0; i <= maxi; i++)
 		{
@@ -172,7 +173,7 @@ int main(int argc, char *argv[])
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	for (int i = 0; i < 8; i++)
 	{
-		use_stack_push(ptrstack, '0' + i);
+		use_stack_push(ptrstack, (char) ('0' + i));
 	}
 	stackPrint(ptrstack);
 
@@ -196,6 +197,30 @@ int main(int argc, char *argv[])
 	use_stack_full(ptrstack);
 
 	printf("\n\n----- C202 - The End of Basic Tests -----\n");
+
+	printf("\n\nC202 - Stack Implemented Using an Array - Advanced Tests\n");
+	printf("-----------------------------------------------------\n");
+
+	printf("\n[TEST01] Init Error\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	use_stack_init(NULL);
+
+	printf("\n[TEST02] Top empty stack\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	use_stack_init(ptrstack);
+	use_stack_top(ptrstack);
+
+	printf("\n[TEST03] Pop empty stack\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+	printf("\n[TEST04] Push full stack\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	for (int i = 0; i <= 8; i++)
+	{
+		use_stack_push(ptrstack, (char) ('0' + i));
+	}
+
+	printf("\n\n----- C202 - The End of Advanced Tests -----\n");
 
 	free(ptrstack);
 

@@ -89,7 +89,7 @@ int stackEmpty(const tStack *s)
 ** Funkci implementujte jako jediný příkaz. Vyvarujte se zejména konstrukce
 ** typu "if ( true ) b=true else b=false".
 */
-	return s->top == -1 ? 1 : 0;
+	return s->top == -1;
 }
 
 
@@ -103,7 +103,7 @@ int stackFull(const tStack *s)
 **
 ** Funkci implementujte jako jediný příkaz.
 */
-	return s->top + 1 == STACK_SIZE ? 1 : 0;
+	return s->top + 1 == STACK_SIZE;
 }
 
 
@@ -113,7 +113,7 @@ void stackTop(const tStack *s, char *c)
 ** Vrací znak z vrcholu zásobníku prostřednictvím parametru c.
 ** Tato operace ale prvek z vrcholu zásobníku neodstraňuje.
 ** Volání operace Top při prázdném zásobníku je nekorektní
-** a ošetřete ho voláním funkce stackError(SERR_TOP). 
+** a ošetřete ho voláním funkce stackError(SERR_TOP).
 **
 ** Pro ověření, zda je zásobník prázdný, použijte dříve definovanou
 ** funkci stackEmpty.

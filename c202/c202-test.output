@@ -52,3 +52,25 @@ stackFull returned 'FALSE'
 
 
 ----- C202 - The End of Basic Tests -----
+
+
+C202 - Stack Implemented Using an Array - Advanced Tests
+-----------------------------------------------------
+
+[TEST01] Init Error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: INIT
+
+[TEST02] Top empty stack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: TOP
+
+[TEST03] Pop empty stack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[TEST04] Push full stack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: PUSH
+
+
+----- C202 - The End of Advanced Tests -----
