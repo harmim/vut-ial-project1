@@ -198,6 +198,7 @@ int main(int argc, char *argv[])
 
 	printf("\n\n----- C202 - The End of Basic Tests -----\n");
 
+
 	printf("\n\nC202 - Stack Implemented Using an Array - Advanced Tests\n");
 	printf("-----------------------------------------------------\n");
 
@@ -223,6 +224,7 @@ int main(int argc, char *argv[])
 	printf("\n\n----- C202 - The End of Advanced Tests -----\n");
 
 	free(ptrstack);
+
 
 	return EXIT_SUCCESS;
 }

@@ -93,3 +93,34 @@ Conversion result match:   OK
 
 
 ----- C204 - The End of Basic Tests -----
+
+
+C204 - Infix to Postfix Expression Conversion - Advanced Tests
+-----------------------------------------------------------
+
+[TEST01] Complex expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Input infix expression:    (4+8)*(6-5)/((3-2)*(2+2))=
+Output postfix expression: 48+65-*32-22+*/=
+Conversion result match:   OK
+
+[TEST02] Multiple braces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Input infix expression:    (((((1+1)))))=
+Output postfix expression: 11+=
+Conversion result match:   OK
+
+[TEST03] Multiple braces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Input infix expression:    (1+y*(2-x/(2+z)))=
+Output postfix expression: 1y2x2z+/-*+=
+Conversion result match:   OK
+
+[TEST04] Empty
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Input infix expression:    =
+Output postfix expression: =
+Conversion result match:   OK
+
+
+----- C204 - The End of Advanced Tests -----

@@ -672,7 +672,8 @@ int main(int argc, char *argv[])
 	test_DLCopyLast();
 	test_DLDisposeList();
 
-	printf("\n----------------------- konec příkladu c206 -------------------------\n");
+	printf("\n\n----------------------- konec příkladu c206 -------------------------\n");
+
 
 	return EXIT_SUCCESS;
 }

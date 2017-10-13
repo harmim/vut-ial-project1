@@ -1,10 +1,10 @@
-
 /* ******************************* c204.c *********************************** */
 /*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
 /*  Úkol: c204 - Převod infixového výrazu na postfixový (s využitím c202)     */
 /*  Referenční implementace: Petr Přikryl, listopad 1994                      */
 /*  Přepis do jazyka C: Lukáš Maršík, prosinec 2012                           */
 /*  Upravil: Kamil Jeřábek, říjen 2017                                        */
+/*  Implementace: Dominik Harmim <xharmi00@stud.fit.vutbr.cz>, říjen 2017     */
 /* ************************************************************************** */
 /*
 ** Implementujte proceduru pro převod infixového zápisu matematického
@@ -33,6 +33,7 @@
 
 #include "c204.h"
 
+
 int solved;
 
 
@@ -48,9 +49,26 @@ int solved;
 ** Aby se minimalizoval počet přístupů ke struktuře zásobníku, můžete zde
 ** nadeklarovat a používat pomocnou proměnnou typu char.
 */
-void untilLeftPar ( tStack* s, char* postExpr, unsigned* postLen ) {
+void untilLeftPar(tStack *s, char *postExpr, unsigned *postLen)
+{
+	char stackTopChar; // deklarace proměnné pro uložení znaku z vrcholu zásobníku
 
+	// průchod přes zásobník, dokud nebude prázdný
+	while (!stackEmpty(s))
+	{
+		stackTop(s, &stackTopChar); // uložení znaku z vrcholu zásobníku
+		stackPop(s); // odstranění znaku z vrcholu zásobníku
+
+		if (stackTopChar == '(') // na vrcholu zásobníku byla levá závorka
+		{
+			break; // odebirání znaků v vrcholu zásobníku musí skončit
+		}
+
+		// umístění znaku z vrcholu zásobníku na konec výstupního řetězce a inkrementace jeho délky
+		postExpr[(*postLen)++] = stackTopChar;
+	}
 }
+
 
 /*
 ** Pomocná funkce doOperation.
@@ -62,9 +80,35 @@ void untilLeftPar ( tStack* s, char* postExpr, unsigned* postLen ) {
 ** výrazu a taktéž ukazatel na první volné místo, do kterého se má zapisovat, 
 ** představuje parametr postLen, výstupním polem znaků je opět postExpr.
 */
-void doOperation ( tStack* s, char c, char* postExpr, unsigned* postLen ) {
+void doOperation(tStack *s, char c, char *postExpr, unsigned *postLen)
+{
+	if (stackEmpty(s)) // zásobník je prázdný
+	{
+		stackPush(s, c); // vložení operátoru na vrchol zásobníku
+		return;
+	}
 
+	char stackTopChar; // deklarace proměnné pro uložení znaku z vrcholu zásobníku
+	stackTop(s, &stackTopChar); // uložení znaku z vrcholu zásobníku
+	if (stackTopChar == '(') // na vrcholu zásobníku je levá závorka
+	{
+		stackPush(s, c); // vložení operátoru na vrchol zásobníku
+		return;
+	}
+	if ((stackTopChar == '+' || stackTopChar == '-') && (c == '*' || c == '/'))
+	{ // na vrcholu zásobníku je operátor s nižší prioritou
+		stackPush(s, c); // vložení operátoru na vrchol zásobníku
+		return;
+	}
+
+	// umístění znaku z vrcholu zásobníku na konec výstupního řetězce a inkrementace jeho délky
+	postExpr[(*postLen)++] = stackTopChar;
+	stackPop(s); // odstranění znaku z vrcholu zásobníku
+
+	// tato funkce se bude rekuzivně volat, dokud se daný operátor nepodaří vložit na vrchol zásobníku
+	doOperation(s, c, postExpr, postLen);
 }
+
 
 /* 
 ** Konverzní funkce infix2postfix.
@@ -110,10 +154,61 @@ void doOperation ( tStack* s, char c, char* postExpr, unsigned* postLen ) {
 ** ověřte, že se alokace skutečně zdrařila. V případě chyby alokace vraťte namísto
 ** řetězce konstantu NULL.
 */
-char* infix2postfix (const char* infExpr) {
+char *infix2postfix(const char *infExpr)
+{
+	// Alokace paměti pro výstupní řetězec.
+	char *postExpr = (char *) malloc((MAX_LEN) * sizeof(char));
+	if (!postExpr)
+	{
+		// malloc selhal
+		return NULL;
+	}
 
-  solved = 0;                        /* V případě řešení smažte tento řádek! */
-  return NULL;                /* V případě řešení můžete smazat tento řádek. */
+	// Alokace paměti pro zásobník.
+	tStack *stack = (tStack *) malloc(sizeof(tStack));
+	if (!stack)
+	{
+		// malloc selhal
+		return NULL;
+	}
+	stackInit(stack); // inicializace zásobníku
+
+	unsigned int postLen = 0; // inicializace proměnné pro délku výstupního řetězce
+	// průchod přes vstupní řetězec (znak po znaku, zleva doprava)
+	for (char c = *infExpr; c != '\0'; c = *(++infExpr))
+	{
+		if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) // operand
+		{
+			postExpr[postLen++] = c; // přidání znaku na konec výstupního řetězce a inkrementace jeho délky
+		}
+		else if (c == '(') // levá závorka
+		{
+			stackPush(stack, c); // vložení znaku na vrchol zásobníku
+		}
+		else if (c == '+' || c == '-' || c == '*' || c == '/') // operátor
+		{
+			doOperation(stack, c, postExpr, &postLen); // zpracování operátoru
+		}
+		else if (c == ')') // pravá závorka
+		{
+			untilLeftPar(stack, postExpr, &postLen); // vyprázdnění zásobníku až po levou závorku
+		}
+		else if (c == '=') // konec výrazu
+		{
+			// průchod přes zásobník, dokud nebude prázdný
+			while (!stackEmpty(stack))
+			{
+				// uložení znaku z vrcholu zásobníku na konec výstupního řetězce a inkrementace jeho délky
+				stackTop(stack, &(postExpr[postLen++]));
+				stackPop(stack); // odstranění znaku z vrcholu zásobníku
+			}
+			postExpr[postLen++] = '='; // přidání znaku = na konec výstupního řetězce a inkrementace jeho délky
+			break; // konec zpracovávání výrazu
+		}
+	}
+
+	postExpr[postLen++] = '\0'; // ukončení výstupního řetězce znakem s hodnotou 0 a inkrementace jeho délky
+	free(stack); // uvolnění paměti alokované pro zásobník
+
+	return postExpr; // vrácení výstupního řetězce
 }
-
-/* Konec c204.c */
