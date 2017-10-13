@@ -3,7 +3,7 @@
 VPATH = $(PROJ)
 
 CC = gcc
-CFLAGS := -Wall -std=c99 -pedantic -lm
+CFLAGS := -Wall -std=c99 -pedantic
 
 PROJ = c202
 EXECUTABLE = $(PROJ)-test
@@ -31,12 +31,12 @@ $(EXECUTABLE): $(OBJS)
 .PHONY: test
 test: $(EXECUTABLE)
 	./$(EXECUTABLE) > $(TEST_OUTPUT)
-	diff -u $(TEST_OUTPUT) $(PROJ)/$(PROJ)-test.output
+	- diff -u $(TEST_OUTPUT) $(PROJ)/$(PROJ)-test.output
 
 
 .PHONY: clean
 clean:
-	rm -rf *.o *.out $(EXECUTABLE) $(TEST_OUTPUT) $(DEPDIR)
+	rm -rf *.o *.out *.dSYM/ $(EXECUTABLE) $(TEST_OUTPUT) $(DEPDIR)
 
 
 # #################### Auto-Dependency Generation #####################

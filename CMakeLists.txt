@@ -3,7 +3,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.9)
 
 SET(CMAKE_C_COMPILER gcc)
-SET(CMAKE_C_FLAGS "-Wall -std=c99 -pedantic -lm -g")
+SET(CMAKE_C_FLAGS "-Wall -std=c99 -pedantic -g")
 
 IF(${PROJECT})
 	PROJECT(${PROJECT})

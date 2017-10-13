@@ -33,7 +33,7 @@ Zavoláme 2x operaci DLInsertFirst a 2x operaci DLInsertLast.
 Otestujeme funkci DLFirst při neaktivním seznamu a funkci DLActive.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	2	 <= toto je aktivní prvek 
+ 	2	 <= toto je aktivní prvek
  	1
  	3
  	4
@@ -47,7 +47,7 @@ Otestujeme funkci DLLast.
  	2
  	1
  	3
- 	4	 <= toto je aktivní prvek 
+ 	4	 <= toto je aktivní prvek
 -----------------
 Operace DLActive vrací hodnotu true.
 
@@ -62,17 +62,17 @@ Test funkce DLPred -- voláme 3x, aktivita zůstane na prvním prvku.
 -----------------
  	2
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= toto je aktivní prvek
  	4
 -----------------
 -----------------
  	2
- 	1	 <= toto je aktivní prvek 
+ 	1	 <= toto je aktivní prvek
  	3
  	4
 -----------------
 -----------------
- 	2	 <= toto je aktivní prvek 
+ 	2	 <= toto je aktivní prvek
  	1
  	3
  	4
@@ -83,7 +83,7 @@ Operace DLActive vrací hodnotu true.
 Aktualizujeme obsah aktivního prvku.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	5	 <= toto je aktivní prvek 
+ 	5	 <= toto je aktivní prvek
  	1
  	3
  	4
@@ -96,21 +96,21 @@ Test funkce DLSucc -- voláme 3x, aktivita zůstane na posledním prvku.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	5
- 	1	 <= toto je aktivní prvek 
+ 	1	 <= toto je aktivní prvek
  	3
  	4
 -----------------
 -----------------
  	5
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= toto je aktivní prvek
  	4
 -----------------
 -----------------
  	5
  	1
  	3
- 	4	 <= toto je aktivní prvek 
+ 	4	 <= toto je aktivní prvek
 -----------------
 Operace DLActive vrací hodnotu true.
 
@@ -129,7 +129,7 @@ Operace DLActive vrací hodnotu false.
 Nastavíme aktivitu na začátek a pak ji zrušíme operací DLPred.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	5	 <= toto je aktivní prvek 
+ 	5	 <= toto je aktivní prvek
  	1
  	3
  	4
@@ -182,11 +182,11 @@ Zkusíme DLPostDelete při aktivitě na posledním prvku.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= toto je aktivní prvek
 -----------------
 -----------------
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= toto je aktivní prvek
 -----------------
 Operace DLActive vrací hodnotu true.
 
@@ -194,7 +194,7 @@ Operace DLActive vrací hodnotu true.
 Operace DLPreDelete nyní smaže první prvek.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= toto je aktivní prvek
 -----------------
 Operace DLActive vrací hodnotu true.
 
@@ -204,5 +204,302 @@ Seznam nakonec zrušíme.
 -----------------
 -----------------
 Operace DLActive vrací hodnotu false.
+
+
+Dvousměrně vázaný lineární seznam - pokročilé testy
+=================================
+
+[TEST01]
+Insert first do prázdného seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	1
+-----------------
+Operace DLCopyFirst vrací obsah 1.
+Operace DLCopyLast vrací obsah 1.
+-----------------
+-----------------
+
+[TEST02]
+Insert last do prázdného seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	1
+-----------------
+Operace DLCopyFirst vrací obsah 1.
+Operace DLCopyLast vrací obsah 1.
+-----------------
+-----------------
+
+[TEST03]
+Copy first a copy last na prázdném seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+*ERROR* The program has performed an illegal operation.
+Operace DLCopyFirst volala funkci DLError.
+*ERROR* The program has performed an illegal operation.
+Operace DLCopyLast volala funkci DLError.
+-----------------
+-----------------
+
+[TEST04]
+Použití DLDeleteFirst při aktivním prvním prvku a při jednom prvku v seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+ 	1
+ 	2
+-----------------
+-----------------
+ 	1	 <= toto je aktivní prvek
+ 	2
+-----------------
+-----------------
+ 	2
+-----------------
+-----------------
+-----------------
+-----------------
+-----------------
+
+[TEST05]
+Použití DLDeleteLast při aktivním posledním prvku a při jednom prvku v seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+ 	1
+ 	2
+-----------------
+-----------------
+ 	1
+ 	2	 <= toto je aktivní prvek
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+-----------------
+-----------------
+-----------------
+
+[TEST06]
+Použití DLPostDelete a DLPreDelete na okrajové případy
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	7
+-----------------
+-----------------
+ 	6
+ 	7
+-----------------
+-----------------
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	2
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1
+ 	2
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1
+ 	2
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1
+ 	2
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1	 <= toto je aktivní prvek
+ 	2
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1	 <= toto je aktivní prvek
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	1
+ 	3	 <= toto je aktivní prvek
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+-----------------
+ 	3	 <= toto je aktivní prvek
+ 	4
+ 	5
+ 	6
+ 	7
+-----------------
+Operace DLCopyFirst vrací obsah 3.
+-----------------
+ 	3
+ 	4
+ 	5
+ 	6
+ 	7	 <= toto je aktivní prvek
+-----------------
+-----------------
+ 	3
+ 	4
+ 	5
+ 	7	 <= toto je aktivní prvek
+-----------------
+-----------------
+ 	3
+ 	4
+ 	5	 <= toto je aktivní prvek
+ 	7
+-----------------
+-----------------
+ 	3
+ 	4
+ 	5	 <= toto je aktivní prvek
+-----------------
+Operace DLCopyLast vrací obsah 5.
+-----------------
+-----------------
+
+[TEST07]
+Použití DLSucc, DLPred a DLActualize na neaktivním seznamu
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+ 	1
+-----------------
+-----------------
+-----------------
+
+[TEST08]
+Použití DLPostInsert a DLPreInsert
+~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+-----------------
+ 	2
+-----------------
+-----------------
+ 	1
+ 	2
+-----------------
+-----------------
+ 	1
+ 	2
+-----------------
+-----------------
+ 	1
+ 	2
+-----------------
+-----------------
+ 	1	 <= toto je aktivní prvek
+ 	2
+-----------------
+-----------------
+ 	1	 <= toto je aktivní prvek
+ 	3
+ 	2
+-----------------
+-----------------
+ 	4
+ 	1	 <= toto je aktivní prvek
+ 	3
+ 	2
+-----------------
+Operace DLCopyFirst vrací obsah 4.
+-----------------
+ 	4
+ 	1
+ 	3
+ 	2	 <= toto je aktivní prvek
+-----------------
+-----------------
+ 	4
+ 	1
+ 	3
+ 	5
+ 	2	 <= toto je aktivní prvek
+-----------------
+-----------------
+ 	4
+ 	1
+ 	3
+ 	5
+ 	2	 <= toto je aktivní prvek
+ 	6
+-----------------
+Operace DLCopyLast vrací obsah 6.
+-----------------
+-----------------
 
 ----------------------- konec příkladu c206 -------------------------

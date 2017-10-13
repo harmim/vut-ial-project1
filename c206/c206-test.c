@@ -33,7 +33,7 @@ void print_elements_of_list(tDLList TL)
 		printf("\n \t%d", TempList.First->data);
 		if ((TempList.First == TL.Act) && (TL.Act != NULL))
 		{
-			printf("\t <= toto je aktivní prvek ");
+			printf("\t <= toto je aktivní prvek");
 		}
 		TempList.First = TempList.First->rptr;
 		CurrListLength++;
@@ -557,6 +557,120 @@ int main(int argc, char *argv[])
 	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLDisposeList();
 	test_DLActive();
+
+	printf("\n\nDvousměrně vázaný lineární seznam - pokročilé testy\n");
+	printf("=================================\n");
+
+	printf("\n[TEST01]\n");
+	printf("Insert first do prázdného seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	ElemValue = 1;
+	test_DLInsertFirst();
+	test_DLCopyFirst();
+	test_DLCopyLast();
+	test_DLDisposeList();
+
+	printf("\n[TEST02]\n");
+	printf("Insert last do prázdného seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	ElemValue = 1;
+	test_DLInsertLast();
+	test_DLCopyFirst();
+	test_DLCopyLast();
+	test_DLDisposeList();
+
+	printf("\n[TEST03]\n");
+	printf("Copy first a copy last na prázdném seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	test_DLCopyFirst();
+	test_DLCopyLast();
+	test_DLDisposeList();
+
+	printf("\n[TEST04]\n");
+	printf("Použití DLDeleteFirst při aktivním prvním prvku a při jednom prvku v seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	ElemValue = 1;
+	test_DLInsertFirst();
+	ElemValue = 2;
+	test_DLInsertLast();
+	test_DLFirst();
+	test_DLDeleteFirst();
+	test_DLDeleteFirst();
+	test_DLDisposeList();
+
+	printf("\n[TEST05]\n");
+	printf("Použití DLDeleteLast při aktivním posledním prvku a při jednom prvku v seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	ElemValue = 1;
+	test_DLInsertFirst();
+	ElemValue = 2;
+	test_DLInsertLast();
+	test_DLLast();
+	test_DLDeleteLast();
+	test_DLDeleteLast();
+	test_DLDisposeList();
+
+	printf("\n[TEST06]\n");
+	printf("Použití DLPostDelete a DLPreDelete na okrajové případy\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	for (ElemValue = 7; ElemValue >= 1; ElemValue--)
+	{
+		test_DLInsertFirst();
+	}
+	test_DLPostDelete();
+	test_DLPreDelete();
+	test_DLFirst();
+	test_DLPostDelete();
+	test_DLSucc();
+	test_DLPreDelete();
+	test_DLCopyFirst();
+	test_DLLast();
+	test_DLPreDelete();
+	test_DLPred();
+	test_DLPostDelete();
+	test_DLCopyLast();
+	test_DLDisposeList();
+
+	printf("\n[TEST07]\n");
+	printf("Použití DLSucc, DLPred a DLActualize na neaktivním seznamu\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	ElemValue = 1;
+	test_DLInsertFirst();
+	test_DLSucc();
+	test_DLPred();
+	test_DLActualize();
+	test_DLDisposeList();
+
+	printf("\n[TEST08]\n");
+	printf("Použití DLPostInsert a DLPreInsert\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
+	test_DLInitList();
+	for (ElemValue = 2; ElemValue >= 1; ElemValue--)
+	{
+		test_DLInsertFirst();
+	}
+	test_DLPostInsert();
+	test_DLPreInsert();
+	test_DLFirst();
+	ElemValue = 3;
+	test_DLPostInsert();
+	ElemValue = 4;
+	test_DLPreInsert();
+	test_DLCopyFirst();
+	test_DLLast();
+	ElemValue = 5;
+	test_DLPreInsert();
+	ElemValue = 6;
+	test_DLPostInsert();
+	test_DLCopyLast();
+	test_DLDisposeList();
 
 	printf("\n----------------------- konec příkladu c206 -------------------------\n");
 
