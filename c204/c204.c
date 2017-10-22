@@ -14,11 +14,11 @@
 **
 ** Implementujte následující funkci:
 **
-**    infix2postfix .... konverzní funkce pro převod infixového výrazu 
+**    infix2postfix .... konverzní funkce pro převod infixového výrazu
 **                       na postfixový
 **
 ** Pro lepší přehlednost kódu implementujte následující pomocné funkce:
-**    
+**
 **    untilLeftPar .... vyprázdnění zásobníku až po levou závorku
 **    doOperation .... zpracování operátoru konvertovaného výrazu
 **
@@ -76,8 +76,8 @@ void untilLeftPar(tStack *s, char *postExpr, unsigned *postLen)
 ** vstupního pole znaků.
 **
 ** Dle priority předaného operátoru a případně priority operátoru na
-** vrcholu zásobníku rozhodneme o dalším postupu. Délka převedeného 
-** výrazu a taktéž ukazatel na první volné místo, do kterého se má zapisovat, 
+** vrcholu zásobníku rozhodneme o dalším postupu. Délka převedeného
+** výrazu a taktéž ukazatel na první volné místo, do kterého se má zapisovat,
 ** představuje parametr postLen, výstupním polem znaků je opět postExpr.
 */
 void doOperation(tStack *s, char c, char *postExpr, unsigned *postLen)
@@ -110,7 +110,7 @@ void doOperation(tStack *s, char c, char *postExpr, unsigned *postLen)
 }
 
 
-/* 
+/*
 ** Konverzní funkce infix2postfix.
 ** Čte infixový výraz ze vstupního řetězce infExpr a generuje
 ** odpovídající postfixový výraz do výstupního řetězce (postup převodu
@@ -133,14 +133,14 @@ void doOperation(tStack *s, char c, char *postExpr, unsigned *postLen)
 **    závorek. Uvažujte, že vstupní výraz je zapsán správně (neošetřujte
 **    chybné zadání výrazu).
 **
-** 4. Každý korektně zapsaný výraz (infixový i postfixový) musí být uzavřen 
+** 4. Každý korektně zapsaný výraz (infixový i postfixový) musí být uzavřen
 **    ukončovacím znakem '='.
 **
 ** 5. Při stejné prioritě operátorů se výraz vyhodnocuje zleva doprava.
 **
 ** Poznámky k implementaci
 ** -----------------------
-** Jako zásobník použijte zásobník znaků tStack implementovaný v příkladu c202. 
+** Jako zásobník použijte zásobník znaků tStack implementovaný v příkladu c202.
 ** Pro práci se zásobníkem pak používejte výhradně operace z jeho rozhraní.
 **
 ** Při implementaci využijte pomocné funkce untilLeftPar a doOperation.
@@ -157,7 +157,7 @@ void doOperation(tStack *s, char c, char *postExpr, unsigned *postLen)
 char *infix2postfix(const char *infExpr)
 {
 	// Alokace paměti pro výstupní řetězec.
-	char *postExpr = (char *) malloc((MAX_LEN) * sizeof(char));
+	char *postExpr = (char *) malloc(MAX_LEN * sizeof(char));
 	if (!postExpr)
 	{
 		// malloc selhal
@@ -169,6 +169,7 @@ char *infix2postfix(const char *infExpr)
 	if (!stack)
 	{
 		// malloc selhal
+		free(postExpr);
 		return NULL;
 	}
 	stackInit(stack); // inicializace zásobníku
