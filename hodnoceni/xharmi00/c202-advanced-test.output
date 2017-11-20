@@ -1,0 +1,126 @@
+C202 - Stack Implemented Using an Array - Advanced Tests
+--------------------------------------------------------
+
+[TEST01] Initialization with NULL pointer should cause an error but not a crash.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: INIT
+
+[TEST02] We check a stack of size 1.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST03] Pop should do nothing here ...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST04] ... while Top should cause an error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: TOP
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST05] We push 'O' as the first item.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [ O ] TOP ---
+stackEmpty returned 'FALSE'
+stackFull returned 'TRUE'
+
+[TEST06] We try to push another item. It should cause an error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: PUSH
+--- BOTTOM [ O ] TOP ---
+stackEmpty returned 'FALSE'
+stackFull returned 'TRUE'
+
+[TEST07] And once again.
+~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: PUSH
+--- BOTTOM [ O ] TOP ---
+stackEmpty returned 'FALSE'
+stackFull returned 'TRUE'
+
+[TEST08] What is on the top now?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+stackTop returned 'O'
+
+[TEST09] We remove it ...
+~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST10] ... and check behaviour of Pop and Top.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: TOP
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST11] Now, we check a stack of maximum size.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST12] Pop should do nothing here ...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST13] ... while Top should cause an error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: TOP
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST14] Pushing small letters (but we have no enough space for that).
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: PUSH
+Stack error: PUSH
+Stack error: PUSH
+Stack error: PUSH
+Stack error: PUSH
+Stack error: PUSH
+--- BOTTOM [ abcdefghijklmnopqrst ] TOP ---
+stackEmpty returned 'FALSE'
+stackFull returned 'TRUE'
+
+[TEST15] What is on the top now?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [ abcdefghijklmnopqrst ] TOP ---
+stackTop returned 't'
+
+[TEST16] Pushing another item should cause another error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: PUSH
+stackEmpty returned 'FALSE'
+stackFull returned 'TRUE'
+
+[TEST17] The top item should be the same.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [ abcdefghijklmnopqrst ] TOP ---
+stackTop returned 't'
+
+[TEST18] We remove all items without proper counting ...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+[TEST19] ... and check behaviour of Pop and Top.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stack error: TOP
+Stack error: TOP
+--- BOTTOM [  ] TOP ---
+stackEmpty returned 'TRUE'
+stackFull returned 'FALSE'
+
+
+----- C202 - The End of Advanced Tests -----

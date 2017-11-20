@@ -1,0 +1,176 @@
+C204 - Infix to Postfix Expression Conversion - Basic Tests
+-----------------------------------------------------------
+
+[TEST01] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: All lower case characters support
+
+Original infix expression: a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+x+y+z=
+Your postfix expression:   ab+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+x+y+z+=
+
+Conversion result match:   OK
+
+[TEST02] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: All upper case characters support
+
+Original infix expression: A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+X+Y+Z=
+Your postfix expression:   AB+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+X+Y+Z+=
+
+Conversion result match:   OK
+
+[TEST03] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: All digits support
+
+Original infix expression: 1+2+3+4+5+6+7+8+9+0=
+Your postfix expression:   12+3+4+5+6+7+8+9+0+=
+
+Conversion result match:   OK
+
+[TEST04] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Operands in extra parentheses
+
+Original infix expression: (a)+(b)=
+Your postfix expression:   ab+=
+
+Conversion result match:   OK
+
+[TEST05] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Expression in double extra parentheses
+
+Original infix expression: ((a+b))=
+Your postfix expression:   ab+=
+
+Conversion result match:   OK
+
+[TEST06] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Expression evaluation form the left to the right also for minus operator
+
+Original infix expression: a-b-c=
+Your postfix expression:   ab-c-=
+
+Conversion result match:   OK
+
+[TEST07] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Expression evaluation form the left to the right also for multiply operator
+
+Original infix expression: a*b*c=
+Your postfix expression:   ab*c*=
+
+Conversion result match:   OK
+
+[TEST08] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Expression evaluation form the left to the right also for divide operator
+
+Original infix expression: a/b/c=
+Your postfix expression:   ab/c/=
+
+Conversion result match:   OK
+
+[TEST09] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Multiply operator has higher priority than plus (inverse order)
+
+Original infix expression: A+B*C=
+Your postfix expression:   ABC*+=
+
+Conversion result match:   OK
+
+[TEST10] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Divide operator has higher priority than minus (inverse order)
+
+Original infix expression: A-b/C=
+Your postfix expression:   AbC/-=
+
+Conversion result match:   OK
+
+[TEST11] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Paretntheses change operator priority
+
+Original infix expression: (A+b)/c=
+Your postfix expression:   Ab+c/=
+
+Conversion result match:   OK
+
+[TEST12] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Paretntheses change operator priority
+
+Original infix expression: (a-b)*C=
+Your postfix expression:   ab-C*=
+
+Conversion result match:   OK
+
+[TEST13] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Paretntheses change operator priority
+
+Original infix expression: a*(B*C)=
+Your postfix expression:   aBC**=
+
+Conversion result match:   OK
+
+[TEST14] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Paretntheses change operator priority
+
+Original infix expression: a+(B+c)=
+Your postfix expression:   aBc++=
+
+Conversion result match:   OK
+
+[TEST15] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Mixed operators expression
+
+Original infix expression: a+b*c-d=
+Your postfix expression:   abc*+d-=
+
+Conversion result match:   OK
+
+[TEST16] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Mixed operators expression with parenthesis
+
+Original infix expression: (a+b)*(c-d)=
+Your postfix expression:   ab+cd-*=
+
+Conversion result match:   OK
+
+[TEST17] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Mixed operators expression with parenthesis
+
+Original infix expression: a+b*(c-d)=
+Your postfix expression:   abcd-*+=
+
+Conversion result match:   OK
+
+[TEST18] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Mixed operators expression
+
+Original infix expression: a*b+c/d=
+Your postfix expression:   ab*cd/+=
+
+Conversion result match:   OK
+
+[TEST19] Expression conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aim: Complex expression
+
+Original infix expression: (A*0+b/l)-((c+D)*(x)/k*8)*(e/(3*f/g+r/t*(j+o/p)))=
+Your postfix expression:   A0*bl/+cD+x*k/8*e3f*g/rt/jop/+*+/*-=
+
+Conversion result match:   OK
+
+
+----- C204 - The End of Advanced Tests -----

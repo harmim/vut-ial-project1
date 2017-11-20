@@ -1,0 +1,54 @@
+#/**/
+PRJ=c202
+#/**/
+INTERPRET=../interpret/interpret
+TESTS=$(PRJ)-test $(PRJ)-advanced-test
+# /**/
+PROGS=$(PRJ)-test
+CC=gcc
+CFLAGS=-Wall -std=c99 -pedantic -lm
+
+all: $(PROGS)
+
+$(PRJ)-test: $(PRJ).c $(PRJ)-test.c
+	$(CC) $(CFLAGS) -o $@ $(PRJ).c $(PRJ)-test.c
+
+clean:
+	rm -f *.o *.out $(PROGS)
+#/**/
+	rm -rf zadani reseni
+	rm -f $(TESTS)
+
+$(PRJ)-advanced-test: $(PRJ).c $(PRJ)-advanced-test.c
+	$(CC) $(CFLAGS) -o $@ $(PRJ).c $(PRJ)-advanced-test.c
+
+tests: $(TESTS)
+
+zadani:
+	mkdir $@
+	$(INTERPRET) <$(PRJ).h >$@/$(PRJ).h
+	$(INTERPRET) <$(PRJ).c >$@/$(PRJ).c
+	$(INTERPRET) <Makefile >$@/Makefile
+	$(INTERPRET) <$(PRJ)-test.c >$@/$(PRJ)-test.c
+	cp $(PRJ)-test.output $@/
+
+reseni:
+	mkdir reseni
+	$(INTERPRET) -v <$(PRJ).h >$@/$(PRJ).h
+	$(INTERPRET) -v <$(PRJ).c >$@/$(PRJ).c
+	$(INTERPRET) -v <Makefile >$@/Makefile
+	$(INTERPRET) -v <$(PRJ)-test.c >$@/$(PRJ)-test.c
+
+konverze:
+	cp $(PRJ).h $(PRJ)_i.h
+	iconv -f ISO-8859-2 -t UTF-8 < $(PRJ)_i.h > $(PRJ).h
+	rm $(PRJ)_i.h
+	cp $(PRJ).c $(PRJ)_i.c
+	iconv -f ISO-8859-2 -t UTF-8 < $(PRJ)_i.c > $(PRJ).c
+	rm $(PRJ)_i.c
+	cp $(PRJ)-advanced-test.c $(PRJ)-advanced-test_i.c
+	iconv -f ISO-8859-2 -t UTF-8 < $(PRJ)-advanced-test_i.c > $(PRJ)-advanced-test.c
+	rm $(PRJ)-advanced-test_i.c
+	cp $(PRJ)-test.c $(PRJ)-test_i.c
+	iconv -f ISO-8859-2 -t UTF-8 < $(PRJ)-test_i.c > $(PRJ)-test.c
+	rm $(PRJ)-test_i.c

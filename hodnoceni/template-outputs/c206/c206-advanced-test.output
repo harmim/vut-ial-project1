@@ -1,0 +1,679 @@
+Double Linked List - Advanced Tests
+===================================
+
+[TEST01]
+List initialization
+~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST02]
+Calling DLCopyFirst for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyFirst has called function DLError.
+
+[TEST03]
+Calling DLCopyLast for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyLast has called function DLError.
+
+[TEST04]
+Calling DLCopy for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+
+[TEST05]
+Calling DLFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST06]
+Calling DLLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST07]
+Calling DLDeleteFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST08]
+Calling DLDeleteLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST09]
+Calling DLPostDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST10]
+Calling DLPreDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST11]
+Calling DLPostInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST12]
+Calling DLPreInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST13]
+Calling DLActualize for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST14]
+Calling DLSucc for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST15]
+Calling DLPred for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST16]
+Function DLActive for empty list should return FALSE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+[TEST17]
+Calling DLDisposeList for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST18]
+3x DLInsertFirst
+~~~~~~~~~~~~~~~~
+-----------------
+ 	4
+-----------------
+-----------------
+ 	5
+ 	4
+-----------------
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+
+[TEST19]
+The list should not be active now.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+[TEST20]
+We start at the begin of the list and go to the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	6	 <= activity 
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5	 <= activity 
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST21]
+We start at the end of the list and go to its begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	6
+ 	5
+ 	4	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5	 <= activity 
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6	 <= activity 
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6
+ 	5
+ 	4
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST22]
+We read and destroy the list by DLCopylast and DLDeleteLast functions.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLCopyLast is 4.
+-----------------
+ 	6
+ 	5
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	6	 <= activity 
+ 	5
+-----------------
+Return value of function DLCopyLast is 5.
+-----------------
+ 	6	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	6	 <= activity 
+-----------------
+Return value of function DLCopyLast is 6.
+-----------------
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST23]
+3x DLInsertLast
+~~~~~~~~~~~~~~~
+-----------------
+ 	7
+-----------------
+-----------------
+ 	7
+ 	8
+-----------------
+-----------------
+ 	7
+ 	8
+ 	9
+-----------------
+
+[TEST24]
+The list should not be active now.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+[TEST25]
+We start at the begin of the list and go to the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	7	 <= activity 
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8	 <= activity 
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8
+ 	9	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST26]
+We start at the end of the list and go to its begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	7
+ 	8
+ 	9	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8	 <= activity 
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7	 <= activity 
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	7
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST27]
+We read and destroy the list by DLCopyFirst and DLDeleteFirst functions.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLCopyFirst is 7.
+-----------------
+ 	8
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	8	 <= activity 
+ 	9
+-----------------
+Return value of function DLCopyFirst is 8.
+-----------------
+ 	9
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	9	 <= activity 
+-----------------
+Return value of function DLCopyFirst is 9.
+-----------------
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST28]
+We start with one element in inactive list. Nothing should happen.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+-----------------
+ 	10
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST29]
+Function DLCopy for inactive list should cause an error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+Return value of function DLActive is FALSE.
+
+[TEST30]
+We continue with additional element in inactive list. Again, nothing should happen.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+-----------------
+ 	14
+ 	10
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST31]
+Function DLCopy for inactive list should cause an error again.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+Return value of function DLActive is FALSE.
+
+[TEST32]
+We change values of elements from the begin.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	14	 <= activity 
+ 	10
+-----------------
+-----------------
+ 	18	 <= activity 
+ 	10
+-----------------
+-----------------
+ 	18
+ 	10	 <= activity 
+-----------------
+-----------------
+ 	18
+ 	19	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+
+[TEST33]
+We change values of elements from the end.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	18
+ 	19	 <= activity 
+-----------------
+-----------------
+ 	18
+ 	20	 <= activity 
+-----------------
+-----------------
+ 	18	 <= activity 
+ 	20
+-----------------
+-----------------
+ 	21	 <= activity 
+ 	20
+-----------------
+Return value of function DLActive is TRUE.
+
+[TEST34]
+Function DLDeleteFirst can cause loss of activity.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	21	 <= activity 
+ 	20
+ 	22
+-----------------
+Return value of function DLActive is TRUE.
+-----------------
+ 	21	 <= activity 
+ 	20
+ 	22
+-----------------
+-----------------
+ 	20
+ 	22
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST35]
+Function DLDeleteLast can cause loss of activity.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	23
+ 	20
+ 	22
+-----------------
+Return value of function DLActive is FALSE.
+-----------------
+ 	23
+ 	20
+ 	22	 <= activity 
+-----------------
+-----------------
+ 	23
+ 	20
+-----------------
+Return value of function DLActive is FALSE.
+
+[TEST36]
+Function DLPreDelete deletes first element.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	24
+ 	23
+ 	20
+-----------------
+-----------------
+ 	24	 <= activity 
+ 	23
+ 	20
+-----------------
+-----------------
+ 	24
+ 	23	 <= activity 
+ 	20
+-----------------
+-----------------
+ 	23	 <= activity 
+ 	20
+-----------------
+Return value of function DLCopyFirst is 23.
+
+[TEST37]
+Function DLPostDelete deletes last element.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	23	 <= activity 
+ 	20
+ 	25
+-----------------
+-----------------
+ 	23
+ 	20
+ 	25	 <= activity 
+-----------------
+-----------------
+ 	23
+ 	20	 <= activity 
+ 	25
+-----------------
+-----------------
+ 	23
+ 	20	 <= activity 
+-----------------
+Return value of function DLCopyLast is 20.
+
+[TEST38]
+Function DLPreDelete at the begin of the list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	23	 <= activity 
+ 	20
+-----------------
+-----------------
+ 	23	 <= activity 
+ 	20
+-----------------
+Return value of function DLActive is TRUE.
+
+[TEST39]
+We add a new element at the begin by DLPreInsert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	26
+ 	23	 <= activity 
+ 	20
+-----------------
+Return value of function DLCopyFirst is 26.
+Return value of function DLCopy is 23.
+Return value of function DLActive is TRUE.
+
+[TEST40]
+Function DLPostDelete at the end of the list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	26
+ 	23
+ 	20	 <= activity 
+-----------------
+-----------------
+ 	26
+ 	23
+ 	20	 <= activity 
+-----------------
+Return value of function DLActive is TRUE.
+
+[TEST41]
+We add a new element at the end by DLPostInsert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+ 	26
+ 	23
+ 	20	 <= activity 
+ 	27
+-----------------
+Return value of function DLCopyLast is 27.
+Return value of function DLCopy is 20.
+Return value of function DLActive is TRUE.
+
+[TEST42]
+We dispose the list.
+~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST43]
+Twice.
+~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST44]
+Calling DLCopyFirst for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyFirst has called function DLError.
+
+[TEST45]
+Calling DLCopyLast for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopyLast has called function DLError.
+
+[TEST46]
+Calling DLCopy for empty list should cause en error.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ERROR* The program has performed an illegal operation.
+Function DLCopy has called function DLError.
+
+[TEST47]
+Calling DLFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST48]
+Calling DLLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST49]
+Calling DLDeleteFirst for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST50]
+Calling DLDeleteLast for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST51]
+Calling DLPostDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST52]
+Calling DLPreDelete for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST53]
+Calling DLPostInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST54]
+Calling DLPreInsert for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST55]
+Calling DLActualize for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST56]
+Calling DLSucc for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST57]
+Calling DLPred for empty list should do nothing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------
+-----------------
+
+[TEST58]
+Function DLActive for empty list should return FALSE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return value of function DLActive is FALSE.
+
+----------------------- End of advanced test for c206 ----------------------
